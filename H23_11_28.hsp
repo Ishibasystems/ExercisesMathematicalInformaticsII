@@ -1,0 +1,40 @@
+	ddim xt, 2
+	ddim yt, 2
+	XMIN = -2.0
+	XMAX = 2.0
+	YMIN = -2.0
+	YMAX = 2.0
+	XSIZE = 300
+	YSIZE = 300
+	TMAX = 100
+
+	mes "XSIZE"	: input XSIZE
+	mes "XMIN"	: input XMIN
+	mes "XMAX"	: input XMAX
+	pos 64*1,0
+	mes "YSIZE"	: input YSIZE
+	mes "YMIN"	: input YMIN
+	mes "YMAX"	: input YMAX
+	pos 64*2,0
+	mes "XSIZE"	: input XSIZE
+	mes "XMIN"	: input XMIN
+	mes "XMAX"	: input XMAX
+	pos 64*3,0
+	mes "YSIZE"	: input YSIZE
+	mes "YMIN"	: input YMIN
+	mes "YMAX"	: input YMAX
+	button "ŒvŽZ", *start
+	pos 64*4,0
+	mes "XSIZE"	: input XSIZE
+	mes "XMIN"	: input XMIN
+	mes "XMAX"	: input XMAX
+	pos 64*5,0
+	mes "YSIZE"	: input YSIZE
+	mes "YMIN"	: input YMIN
+	mes "YMAX"	: input YMAX
+	
+	stop
+
+*start
+	
+	stop

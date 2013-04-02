@@ -1,0 +1,36 @@
+	ddim xt, 2
+	ddim yt, 2
+	XMIN = -2.0
+	XMAX = 2.0
+	YMIN = -2.0
+	YMAX = 2.0
+	A = 0.2
+	B = -0.52
+	XSIZE = 300
+	YSIZE = 300
+	TMAX = 100
+	EP = 2.0
+
+	repeat YSIZE
+		y_ = cnt
+		y = (YMAX - YMIN) * cnt / YSIZE + YMIN
+		repeat XSIZE
+			x = (XMAX - XMIN) * cnt / XSIZE + XMIN
+
+			xt = x
+			yt = y
+			flag = 1
+
+			repeat TMAX
+				await
+				xt.1 = xt * xt - yt * yt + A
+				yt.1 = xt * yt * 2 + B
+				xt = xt.1
+				yt = yt.1
+				if sqrt(xt * xt + yt * yt) > EP : flag = 0 : break
+			loop
+			if flag=0 : pset cnt, y_
+		loop
+		title "" + (100.0 * cnt / YSIZE) + " %"
+	loop
+	stop
