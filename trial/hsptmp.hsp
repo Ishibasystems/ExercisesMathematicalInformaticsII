@@ -1,0 +1,48 @@
+	ddim xt, 2
+	ddim yt, 2
+	XMIN = -1.2
+	XMAX = 1.2
+	YMIN = -1.2
+	YMAX = 1.2
+	A = 0.2
+	B = -0.52
+	XSIZE = 300
+	YSIZE = 300
+	TMAX = 100
+	EP = 2.0
+
+	notesel a
+
+	noteadd "P2"
+	noteadd "# 10RU004 Î‹´Ë‘¾"
+	noteadd "300 300"
+	noteadd "1"
+
+	repeat YSIZE
+		s = ""
+		y = (YMAX - YMIN) * cnt / YSIZE + YMIN
+		repeat XSIZE
+			x = (XMAX - XMIN) * cnt / XSIZE + XMIN
+
+			xt = x
+			yt = y
+			flag = 1
+
+			repeat TMAX
+				await
+				xt.1 = xt * xt - yt * yt + A
+				yt.1 = xt * yt * 2 + B
+				xt = xt.1
+				yt = yt.1
+				if sqrt(xt * xt + yt * yt) > EP : flag = 0 : break
+			loop
+			s += "" + flag +" "
+		loop
+
+		noteadd s
+		title "" + (100.0 * cnt / YSIZE) + " %"
+	loop
+
+	notesave "test.pgm"
+
+	end
